@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,6 +35,7 @@
              var listitem=document.createElement("li")  
             listitem.innerHTML=t+'<button class="btn2"style="margin-left:10px;" onclick="deleteitem(event)">DELETE</button>'
             ul.append(listitem)
+            input.value=''
         }
         function deleteitem()
         {
