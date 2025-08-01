@@ -1,16 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TO DO LIST</title>
+    <title>To do list</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="cls1">
-    <center>
-        <h1>TO DO LIST</h1>
-    </center>
+    <h1>To do list</h1>
     <div class="cls">
     <input id="input">
     <button class="btn1"onclick="add()">ADD</button>
@@ -22,14 +21,29 @@
     <script>
         var ul=document.getElementById("listcontainer")
         var input=document.getElementById("input")
+        let todo=[]
+        window.onload=()=>{
+            todo=JSON.parse(localStorage.getItem('todos'))||[]
+            todo.forEach(t =>displayscreen(t));
+        }
         function add()
         {
-            var listitem=document.createElement("li")
-            listitem.innerHTML=input.value+'<button class="btn2"style="margin-left:10px;" onclick="deleteitem(event)">DELETE</button>'
+            todo.push(input.value)
+            localStorage.setItem('todos',JSON.stringify(todo))
+            displayscreen(input.value)
+        }
+        function displayscreen(t){
+             var listitem=document.createElement("li")  
+            listitem.innerHTML=t+'<button class="btn2"style="margin-left:10px;" onclick="deleteitem(event)">DELETE</button>'
             ul.append(listitem)
         }
         function deleteitem()
         {
+            let a=event.target.parentElement.textContent
+            let b=a.replace("DELETE",'')
+            let c=todo.indexOf(b)
+            todo.splice(c,1)
+            localStorage.setItem('todos',JSON.stringify(todo))
             event.target.parentElement.remove()
         }
     </script>
