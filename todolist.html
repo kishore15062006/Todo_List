@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO DO LIST</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="cls1">
+    <center>
+        <h1>TO DO LIST</h1>
+    </center>
+    <div class="cls">
+    <input id="input">
+    <button class="btn1"onclick="add()">ADD</button>
+    <ul id="listcontainer">
+    </ul>
+    </div>
+    </div>
+    
+    <script>
+        var ul=document.getElementById("listcontainer")
+        var input=document.getElementById("input")
+        function add()
+        {
+            var listitem=document.createElement("li")
+            listitem.innerHTML=input.value+'<button class="btn2"style="margin-left:10px;" onclick="deleteitem(event)">DELETE</button>'
+            ul.append(listitem)
+        }
+        function deleteitem()
+        {
+            event.target.parentElement.remove()
+        }
+    </script>
+</body>
+</html>
